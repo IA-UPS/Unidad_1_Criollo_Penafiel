@@ -1,0 +1,128 @@
+---
+title: "Regresion lineal simple y multiple"
+author: "Katherine Criollo y Victoria Peñafiel"
+format: pdf
+editor: visual
+---
+
+## **¿Qué es el aprendizaje estadístico?**
+
+ El conjunto de datos de publicidad consta de las ventas de ese producto en 200 mercados diferentes, junto con los presupuestos de publicidad del producto en cada uno de esos mercados para tres medios diferentes: televisión, radio y periódicos. En este escenario, los presupuestos publicitarios son variables de entrada mientras que las ventas son una variable de salida. Las variables de entrada normalmente se indican con el símbolo X, con un subíndice para distinguirlas. Entonces, X1 podría ser el presupuesto de televisión, X2 el presupuesto de radio y X3 el presupuesto de periódicos. Aquí f es una función fija pero desconocida de X1, \..., Xp, y es un término de error aleatorio, que es independiente de X y tiene media cero. En esta formulación, f representa la información sistemática que proporciona X sobre Y.
+
+### **¿Por qué estimar f?**
+
+Hay dos razones principales por las que podemos desear estimar f: predicción e inferencia. Predicción: En muchas situaciones, un conjunto de entradas X está fácilmente disponible, pero la salida Y no se puede obtener fácilmente. Como ejemplo, suponga que X1, \..., Xp son características de la muestra de sangre de un paciente que se pueden medir fácilmente en un laboratorio, y que Y es una variable que codifica el riesgo del paciente de sufrir una reacción adversa grave a una determinada droga. Es natural tratar de predecir Y utilizando X, ya que así podemos evitar administrar el fármaco en cuestión a pacientes que tienen un alto riesgo de una reacción adversa, es decir, pacientes para quienes la estimación de Y es alta. ¿Por qué el error irreducible es mayor que cero? La cantidad puede contener variables no medidas que son útiles para predecir Y: como no las medimos, f no puede usarlas para su predicción. La cantidad también puede contener una variación no medible. Por ejemplo, el riesgo de una reacción adversa puede variar para un paciente determinado en un día determinado, según la variación en la fabricación del fármaco en sí o la sensación general de bienestar del paciente ese día. Es importante tener en cuenta que el error irreducible siempre proporcionará un límite superior en la precisión de nuestra predicción para Y. Este límite es casi siempre desconocido en la práctica. Inferencia ¿Qué predictores están asociados con la respuesta? A menudo sucede que solo una pequeña fracción de los predictores disponibles están sustancialmente asociados con Y. La identificación de los pocos predictores importantes entre un gran conjunto de posibles variables puede ser extremadamente útil, según la aplicación. ¿Se puede resumir adecuadamente la relación entre Y y cada predictor usando una ecuación lineal, o la relación es más complicada? Históricamente, la mayoría de los métodos para estimar f han adoptado una forma lineal. En algunas situaciones, tal suposición es razonable o incluso deseable. Pero a menudo la verdadera relación es más complicada, en cuyo caso un modelo lineal puede no proporcionar una representación precisa de la relación entre las variables de entrada y salida.
+
+### **Inferencia**
+
+¿Qué predictores están asociados con la respuesta? A menudo sucede que solo una pequeña fracción de los predictores disponibles están sustancialmente asociados con Y. La identificación de los pocos predictores importantes entre un gran conjunto de posibles variables puede ser extremadamente útil, según la aplicación. ¿Se puede resumir adecuadamente la relación entre Y y cada predictor usando una ecuación lineal, o la relación es más complicada? Históricamente, la mayoría de los métodos para estimar f han adoptado una forma lineal. En algunas situaciones, tal suposición es razonable o incluso deseable. Pero a menudo la verdadera relación es más complicada, en cuyo caso un modelo lineal puede no proporcionar una representación precisa de la relación entre las variables de entrada y salida.
+
+### **Aprendizaje Estadístico:**
+
+El objetivo es identificar a las personas que probablemente respondan positivamente a un correo, según las observaciones de las variables demográficas medidas en cada individuo. En este caso, las variables demográficas sirven como predictores y la respuesta a la campaña de marketing (ya sea positiva o negativa) sirve como resultado. ¿La empresa no está interesada en obtener una comprensión profunda de las relaciones entre cada predictor individual y la respuesta; en cambio, la empresa simplemente quiere predecir con precisión la respuesta utilizando los predictores. Finalmente, algunos modelos podrían llevarse a cabo tanto para la predicción como para la inferencia. Por ejemplo, en un entorno inmobiliario, se puede tratar de relacionar los valores de las viviendas con datos como la tasa de criminalidad, la zonificación, la distancia a un río, la calidad del aire, las escuelas, el nivel de ingresos de la comunidad, el tamaño de las casas, etc. En este caso, ¡uno podría estar interesado en la asociación entre cada variable de entrada individual y el precio de la vivienda; por ejemplo, ¿cuánto más valdrá una casa si tiene vista al río? Sí nuestro objetivo final es la predicción, la inferencia o una combinación de los dos, pueden ser apropiados diferentes métodos para estimar f.
+
+### **¿Cómo estimamos f?**
+
+Proporcionamos una descripción general de estas características compartidas en esta sección. Siempre supondremos que hemos observado un conjunto de n puntos de datos diferentes.
+
+Nuestro objetivo es aplicar un método de aprendizaje estadístico a los datos de entrenamiento para estimar la función desconocida f. En otras palabras, queremos encontrar una función ˆf tal que Y fi ˆf(X) para cualquier observación (X, Y ). En términos generales, la mayoría de los métodos de aprendizaje estadístico para esta tarea se pueden caracterizar como paramétricos o no paramétricos. Ahora discutiremos brevemente estos dos tipos de enfoques.
+
+### **Métodos paramétricos:**
+
+1.  Primero, hacemos una suposición acerca de la forma funcional, o forma, de f. Por ejemplo, una suposición muy simple es que f es lineal en X.
+2.  Después de seleccionar un modelo, necesitamos un procedimiento que use los datos de entrenamiento para ajustar o entrenar el modelo. En el caso del modelo lineal (2.4), necesitamos estimar los parámetros fi 0, fi 1,\..., fi p.
+
+El enfoque basado en modelos que se acaba de describir se conoce como paramétrico, reduce el problema de estimar f a uno de estimar un conjunto de parámetros. Asumir una forma paramétrica para f simplifica el problema de estimar f porque generalmente es mucho más fácil estimar un conjunto de parámetros, como fi 0, fi 1,\..., fi p en el modelo lineal. Dado que hemos asumido una relación lineal entre la respuesta y los dos predictores, todo el problema de ajuste se reduce a estimar fi 0, fi 1 y fi 2, lo que hacemos usando la regresión lineal de mínimos cuadrados.
+
+### **Métodos no paramétricos:**
+
+Buscan una estimación de f que se acerque lo más posible a los puntos de datos sin ser demasiado tosco o ondulado. Dichos enfoques pueden tener una gran ventaja sobre los enfoques paramétricos: al evitar la suposición de una forma funcional particular para f, tienen el potencial de adaptarse con precisión a una gama más amplia de formas posibles para f. Por el contrario, los enfoques no paramétricos evitan por completo este peligro, ya que esencialmente no se hace ninguna suposición sobre la forma de f. Pero los enfoques no paramétricos tienen una gran desventaja: dado que no reducen el problema de estimar f a un pequeño número de parámetros, se requiere una gran cantidad de observaciones (mucho más de lo que normalmente se necesita para un enfoque paramétrico) en para obtener una estimación precisa de f. El ajuste no paramétrico ha producido una estimación muy precisa de la verdadera f que se muestra en la figura 2.3. Para ajustar una spline de placa delgada, el analista de datos debe seleccionar un nivel de suavidad. La figura 2.6 muestra el mismo ajuste estriado de placa delgada con un nivel más bajo de suavidad, lo que permite un ajuste más basto.
+
+### **La compensación entre la precisión de la predicción y la interpretabilidad del modelo:**
+
+La regresión lineal es un enfoque relativamente inflexible, porque solo puede generar funciones lineales como las líneas.
+
+Uno podría razonablemente hacerse la siguiente pregunta: ¿por qué elegiríamos usar un método más restrictivo en lugar de un enfoque muy flexible? Si estamos interesados principalmente en la inferencia, entonces los modelos restrictivos son mucho más interpretables. Por ejemplo, cuando el objetivo es la inferencia, el modelo lineal puede ser una buena opción, ya que será muy fácil comprender la relación entre Y y X1, X2,\...,Xp. Los GAM son más flexibles que la regresión lineal. También son algo menos interpretables que la regresión lineal, porque la relación entre cada predictor y la respuesta ahora se modela mediante una curva. Por último, los métodos totalmente no lineales, como embolsado, impulso, máquinas de vectores de soporte con núcleos no lineales y redes neuronales (aprendizaje profundo). Si buscamos desarrollar un algoritmo para predecir el precio de una acción, nuestro único requisito para el algoritmo es que prediga con precisión, la interpretabilidad no es una preocupación. En este escenario, podríamos esperar que sea mejor usar el modelo más flexible disponible.
+
+### **Aprendizaje supervisado versus no supervisado:**
+
+Deseamos ajustar un modelo que relacione la respuesta con los predictores, con el objetivo de predecir con precisión la respuesta para futuras observaciones (predicción) o comprender mejor la relación entre la respuesta y los predictores (inferencia).
+
+Por el contrario, el aprendizaje no supervisado describe la situación algo más desafiante en la que para cada observación i = 1,\...,n, observamos un vector de medidas xi pero ninguna respuesta asociada yi. No es posible ajustar un modelo de regresión lineal, ya que no hay una variable de respuesta que predecir. En este escenario, en cierto sentido estamos trabajando a ciegas, la situación se denomina no supervisada porque carecemos de una variable de respuesta que pueda supervisar nuestro análisis. ¿Qué tipo de análisis estadístico es posible? Podemos buscar comprender las relaciones entre las variables o entre las observaciones. Hemos trazado 150 observaciones con medidas en dos variables, X1 y X2. Cada observación corresponde a uno de tres grupos distintos. Con fines ilustrativos, hemos trazado los miembros de cada grupo utilizando diferentes colores y símbolos.
+
+Muchos problemas caen naturalmente en los paradigmas de aprendizaje supervisado o no supervisado. Sin embargo, a veces la cuestión de si un análisis debe considerarse supervisado o no supervisado es menos clara. Por ejemplo, supongamos que tenemos un conjunto de n observaciones.
+
+Deseamos utilizar un método de aprendizaje estadístico que pueda incorporar las m observaciones para las que se dispone de medidas de respuesta, así como las n -- m observaciones para las que no lo están. Aunque este es un tema interesante, está más allá del alcance de este libro.
+
+### **Evaluación de la precisión del modelo:**
+
+¿Por qué es necesario introducir tantos enfoques diferentes de aprendizaje estadístico, en lugar de un único método óptimo? No hay comida gratis en estadística: ningún método domina a todos los demás sobre todos los conjuntos de datos posibles. En un conjunto de datos en particular, un método específico puede funcionar mejor, pero algún otro método puede funcionar mejor en un conjunto de datos similar pero diferente.
+
+### **Medición de la calidad del ajuste:**
+
+estamos interesados en la precisión de las predicciones que obtenemos cuando aplicamos nuestro método a datos de prueba nunca vistos. ¿Por qué es esto lo que nos importa? Supongamos que estamos interesados en desarrollar un algoritmo para predecir el precio de una acción en función de los rendimientos de acciones anteriores. Podemos entrenar el método utilizando rendimientos de acciones de los últimos 6 meses. Pero realmente no nos importa qué tan bien nuestro método predice el precio de las acciones de la semana pasada.
+
+ Desafortunadamente, hay un problema fundamental con esta estrategia: no hay garantía de que el método con el MSE de entrenamiento más bajo también tenga el MSE de prueba más bajo. En términos generales, el problema es que muchos métodos estadísticos estiman específicamente los coeficientes para minimizar el MSE del conjunto de entrenamiento. Para estos métodos, el MSE del conjunto de entrenamiento puede ser bastante pequeño, pero el MSE de prueba suele ser mucho mayor. Conocemos la verdadera función f, por lo que también podemos calcular el MSE de prueba sobre un conjunto de prueba muy grande, como una función de flexibilidad. (Por supuesto, en general f es desconocido, por lo que esto no será posible).
+
+Esta es una propiedad fundamental del aprendizaje estadístico que se mantiene independientemente del conjunto de datos en cuestión y del método estadístico que se utilice. A medida que aumenta la flexibilidad del modelo, el MSE de entrenamiento disminuirá, pero es posible que no lo haga el MSE de prueba. Cuando un método dado produce un MSE de entrenamiento pequeño pero un MSE de prueba grande, se dice que estamos sobre ajustando los datos.
+
+Independientemente de si se ha producido o no un sobreajuste, casi siempre esperamos que el MSE de entrenamiento sea más pequeño que el MSE de prueba porque la mayoría de los métodos de aprendizaje estadístico ya sea directa o indirectamente, buscan minimizar el MSE de entrenamiento. El sobreajuste se refiere específicamente al caso en el que un modelo menos flexible habría producido un MSE de prueba más pequeño.
+
+### **La compensación entre sesgo y varianza:**
+
+¿Qué queremos decir con la varianza y el sesgo de un método de aprendizaje estadístico? La varianza se refiere a la cantidad por la cual ˆf cambiaría si lo estimamos utilizando un conjunto de datos de entrenamiento diferente. Dado que los datos de entrenamiento se utilizan para ajustarse al método de aprendizaje estadístico, diferentes conjuntos de datos de entrenamiento darán como resultado un ˆf diferente. Pero idealmente, la estimación de f no debería variar demasiado entre los conjuntos de entrenamiento.
+
+Por otro lado, el sesgo se refiere al error que se introduce al aproximar un problema de la vida real, que puede ser extremadamente complicado, por un modelo mucho más simple. Por ejemplo, la regresión lineal supone que existe una relación lineal entre Y y X1, X2,\...,Xp.
+
+En una situación de la vida real en la que no se observa f, generalmente no es posible calcular explícitamente el MSE, el sesgo o la varianza de la prueba para un método de aprendizaje estadístico.
+
+Sin embargo, siempre se debe tener en cuenta la compensación entre sesgo y varianza. En este libro exploramos métodos que son extremadamente flexibles y, por lo tanto, pueden eliminar esencialmente el sesgo. Sin embargo, esto no garantiza que superen a un método mucho más simple como la regresión lineal. Para tomar un ejemplo extremo, suponga que la verdadera f es lineal.
+
+### **La configuración de clasificación:**
+
+Muchos de los conceptos que hemos encontrado, como el equilibrio entre sesgo y varianza, se transfieren al entorno de clasificación con solo algunas modificaciones debido al hecho de que yi ya no es cuantitativo. Suponga que buscamos estimar f sobre la base de observaciones de entrenamiento {(x1, y1),\...,(xn, yn)}, donde ahora y1,\...,y n son cualitativas.
+
+### **El clasificador bayesiano:**
+
+Para cada valor de X1 y X2, existe una probabilidad diferente de que la respuesta sea naranja o azul. Dado que se trata de datos simulados, sabemos cómo se generaron los datos y podemos calcular las probabilidades condicionales para cada valor de X1 y X2. La región sombreada en naranja refleja el conjunto de puntos para los que Pr (Y = naranja\|X) es superior al 50 %, mientras que la región sombreada en azul indica el conjunto de puntos para los que la probabilidad es inferior al 50 %. La línea discontinua morada representa los puntos donde la probabilidad es exactamente del 50 %. Esto se llama el límite de decisión de Bayes. La predicción del clasificador de Bayes está determinada por el límite de decisión de Bayes, una observación que cae en el lado naranja del límite se asignará a la clase naranja y, de manera similar, una observación en el lado azul del límite se asignará a la clase azul.
+
+-   Kvecinos más cercanos:
+
+Pero para datos reales, no conocemos la distribución condicional de Y dada X, por lo que calcular el clasificador de Bayes es imposible. Por lo tanto, el clasificador de Bayes sirve como un estándar de oro inalcanzable contra el cual comparar otros métodos.
+
+A pesar del hecho de que es un enfoque muy simple, KNN a menudo puede producir clasificadores que están sorprendentemente cerca del clasificador óptimo de Bayes.
+
+La siguiente figura muestra el límite de decisión de KNN, utilizando K = 10, cuando se aplica al conjunto de datos simulados más grande.
+
+### **Evaluación de la precisión del modelo:**
+
+### Laboratorio Unidad 3
+
+L
+
+```{r}
+library (MASS)
+library (ISLR2)
+```
+
+La biblioteca ISLR2 contiene el conjunto de datos de Boston, que registra medv (valor medio de la casa) para 506 distritos censales en Boston. Buscaremos predecir medv usando 12 predictores como rm (número promedio de habitaciones por casa), age (edad promedio de las casas) y lstat (porcentaje de hogares con bajo estatus socioeconómico).
+
+```{r}
+head (Boston)
+```
+
+Para obtener más información sobre el conjunto de datos, podemos escribir ?Boston.
+
+Comenzaremos usando la función lm() para ajustar un modelo lm() de regresión lineal simple, con medv como respuesta y lstat como predictor. Lo básico la sintaxis es lm(y ∼ x, datos), donde y es la respuesta, x es el predictor y data es el conjunto de datos en el que se guardan estas dos variables.
+
+```{r}
+lm.fit <- lm(medv ∼ lstat)
+```
+
+El comando genera un error porque R no sabe dónde encontrar las variables medv y lstat. La siguiente línea le dice a R que las variables son en Boston. Si adjuntamos Boston, la primera línea funciona bien porque R ahora reconoce las variables.
+
+```{r}
+lm.fit <- lm(medv ∼ lstat , data = Boston)
+attach (Boston)
+lm.fit <- lm(medv ∼ lstat)
+```
