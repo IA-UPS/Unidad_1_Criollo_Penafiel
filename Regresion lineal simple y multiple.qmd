@@ -1,7 +1,7 @@
 ---
 title: "Regresion lineal simple y multiple"
 author: "Katherine Criollo y Victoria Peñafiel"
-format: pdf
+format: html
 editor: visual
 ---
 
