@@ -5,6 +5,8 @@ format: pdf
 editor: visual
 ---
 
+# Resumen 2
+
 ## **¿Qué es el aprendizaje estadístico?**
 
  El conjunto de datos de publicidad consta de las ventas de ese producto en 200 mercados diferentes, junto con los presupuestos de publicidad del producto en cada uno de esos mercados para tres medios diferentes: televisión, radio y periódicos. En este escenario, los presupuestos publicitarios son variables de entrada mientras que las ventas son una variable de salida. Las variables de entrada normalmente se indican con el símbolo X, con un subíndice para distinguirlas. Entonces, X1 podría ser el presupuesto de televisión, X2 el presupuesto de radio y X3 el presupuesto de periódicos. Aquí f es una función fija pero desconocida de X1, \..., Xp, y es un término de error aleatorio, que es independiente de X y tiene media cero. En esta formulación, f representa la información sistemática que proporciona X sobre Y.
