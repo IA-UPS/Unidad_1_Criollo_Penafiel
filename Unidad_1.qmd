@@ -5,6 +5,8 @@ format: pdf
 editor: visual
 ---
 
+# Resumen 1
+
 ## INTRODUCCIÓN AL APRENDIZAJE AUTOMÁTICO
 
 Enseñar a una computadora es una tarea que se encuentra ligada a que ella aprenda a jugar, responder preguntas triviales o que reflexione sobre filosofía. Mientras que el aprendizaje automático se asemeja a entrenar en algo a un empleado y no a criarlo desde que es un niño. Después de esta breve introducción sobre el capítulo, en el mismo se tratarán varios temas como: • Los orígenes y las aplicaciones prácticas del aprendizaje automático • Cómo las computadoras definen y representan el conocimiento • Los conceptos básicos que diferencian los enfoques del aprendizaje automático
