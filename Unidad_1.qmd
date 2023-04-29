@@ -1,7 +1,7 @@
 ---
 title: "Introduccion_al_aprendizaje_automatico"
 author: "Katherine_Criollo_y_Victoria_Peñafiel"
-format: pdf
+format: html
 editor: visual
 ---
 
